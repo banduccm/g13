@@ -1,4 +1,9 @@
 # Guild Wars 2
+rgb 235 52 107
+clear
+pos 2 30
+out Guild Wars 2
+
 bind G1 KEY_1
 bind G2 KEY_2
 bind G3 KEY_3
@@ -17,7 +22,7 @@ bind G15 KEY_LEFTCTRL
 bind G16 KEY_KPMINUS
 bind G17 KEY_H
 bind G18 KEY_M
-bind G19 KEY_GRAVE #`
+bind G19 KEY_GRAVE
 bind G20 KEY_T
 bind G21 KEY_J
 bind G22 KEY_SPACE
