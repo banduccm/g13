@@ -19,7 +19,7 @@ bind G12 KEY_E
 bind G13 KEY_9
 bind G14 KEY_0
 bind G15 KEY_LEFTCTRL
-bind G16 KEY_KPMINUS
+bind G16 KEY_MINUS
 bind G17 KEY_H
 bind G18 KEY_M
 bind G19 KEY_GRAVE
