@@ -5,7 +5,7 @@
 //
 // TEST_CASE( "Factorials are computed", "[G13Key]" ) {
 //    SECTION("Key symbols can be found after init") {
-//        //auto profile = G13::G13_Profile();
+//        //auto Profile = G13::G13_Profile();
 //        REQUIRE(true);
 //    }
 //}
@@ -13,15 +13,21 @@
 #include "g13.hpp"
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
+#include "g13_manager.hpp"
+#include "g13_profile.hpp"
 
+/*
 class MockManager : public G13::G13_Manager {
    public:
-    // MOCK_METHOD0(run,void());
+    // MOCK_METHOD0(Run,void());
 };
+*/
 
 class MockDevice : public G13::G13_Device {
    public:
-    MockDevice(G13::G13_Manager& manager) : G13_Device(manager, nullptr, 0) {}
+  //  G13_Device(libusb_device *dev, libusb_context *ctx,
+  //             libusb_device_handle *handle, int m_id);
+    MockDevice(G13::G13_Manager& manager) : G13_Device(nullptr, nullptr, nullptr, 0) {}
 };
 
 class MockProfile : public G13::G13_Profile {
@@ -32,21 +38,22 @@ class MockProfile : public G13::G13_Profile {
 // class MockProfile : public G13::G13_Profile {
 // public:
 //    G13_Profile(G13_Device& keypad, const std::string& name_arg)
-//    : _keypad(keypad), _name(name_arg) {
+//    : m_keypad(keypad), m_name(name_arg) {
 //        _init_keys();
 //
 //    }    MOCK_METHOD0(_init_keys, void());
 //};
 
 TEST(G13Key, g13_key_maps_to_value) {
-    MockManager manager;
-    EXPECT_EQ(manager.find_g13_key_value("G1"), 0);
-    EXPECT_EQ(manager.find_g13_key_value("G22"), 21);
-    // G13::G13_Device device = MockDevice(manager);
-    // G13::G13_Profile profile = MockProfile(device);
+    G13::G13_Manager* manager = G13::G13_Manager::Instance();
 
-    // auto profile = G13::G13_Profile("",std::string(""),"");
-    // auto key = profile.find_key("KEY_0");
+    EXPECT_EQ((*manager).FindG13KeyValue("G1"), 0);
+    EXPECT_EQ((*manager).FindG13KeyValue("G22"), 21);
+    // G13::G13_Device device = MockDevice(manager);
+    // G13::G13_Profile Profile = MockProfile(device);
+
+    // auto Profile = G13::G13_Profile("",std::string(""),"");
+    // auto key = Profile.FindKey("KEY_0");
     // EXPECT_EQ(key->index(), 10);
 }
 

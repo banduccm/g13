@@ -1,11 +1,49 @@
 # Userspace driver for the G13
 
 ## This is a 100% boost free version
-You no longer need to rebuild this every other week when boost updates
+You no longer need to rebuild this every other week when boost updates. It started out as a quick rewrite but has turned out to be a refactoring job gone wild. It is not completely refactored but I have so far:
+
+* Removed all dependencies on boost libraries
+* Fixed a couple of bugs (and probably introduced some others)
+* Merged some work on adding support for additional keys and mouse clicks
+* Added support for USB hotplugging
+* Moved from regular Makefile to CMake
+* Refactored by splitting up huge source files into smaller parts
+* Renamed lots of stuff to start transitioning towards something more like Mozilla coding style
+
+## Changelog
+* v1.0.4
+  * Fixed a major bug in LCD init (thanks to [nihilman](https://github.com/nihilman))
+  * Fixed a small memory leak on hotplug disconnect
+  * More methods renamed for style
+* v1.0.3
+  * Major refactoring work continued
+    (I just wanted something to show here as to not look too empty)
+* v1.0.2
+  * I really can't recall but lots
+* v1.0.1
+  * Somewhere here boost got killed off
+* v1.0.0 Started a version scheme
+
 
 ## Installation
 
 Make sure you have ~~boost~~ log4cpp, libevdev and libusb-1.0 installed.
+
+### For Archlinux
+
+Install [g13-git from AUR](https://aur.archlinux.org/packages/g13-git/)
+
+### Building from source
+
+```
+$ cd <sourcedir>
+$ cmake -B build -S .
+$ cd build
+$ make
+```
+
+## OLD DOCUMENTATION FOLLOWS
 
 ### For Ubuntu (15.10)
 
@@ -18,12 +56,12 @@ Compile by running
 
     make
 
-If you want to run the daemon as user, put the file 91-g13.rules into /etc/udev/rules.d/ (or whatever directory your distribution uses).
+If you want to Run the daemon as user, put the file 91-g13.rules into /etc/udev/rules.d/ (or whatever directory your distribution uses).
 
 ## Running
 
 
-Connect your device, then run ./g13d, it should automatically find your device.
+Connect your device, then Run ./g13d, it should automatically find your device.
 
 If you see output like
 
