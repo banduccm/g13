@@ -64,19 +64,25 @@ template <class KEYT, class VALT>
 inline const VALT &find_or_throw(const std::map<KEYT, VALT> &m,
                                  const KEYT &target) {
   auto i = m.find(target);
-  if (i == m.end()) {
-    // throw NotFoundException();
+  if (i != m.end()) {
+    return i->second; 
   }
-  return i->second;
+  else
+  {
+    throw std::exception();
+  }
 }
 
 template <class KEYT, class VALT>
 inline VALT &find_or_throw(std::map<KEYT, VALT> &m, const KEYT &target) {
   auto i = m.find(target);
-  if (i == m.end()) {
-    // throw NotFoundException();
+  if (i != m.end()) {
+    return i->second;
   }
-  return i->second;
+  else
+  {
+    throw std::exception();
+  }
 }
 
 class NotFoundException : public std::exception {
