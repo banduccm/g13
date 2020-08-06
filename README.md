@@ -1,21 +1,12 @@
 # Userspace driver for the G13
 
-## Updates
-This started out as a quick rewrite but has turned out to be a refactoring job gone wild. It is not completely refactored but I have so far:
+## Fork Information
+This is my own fork, with very few changes:
+* Updated readme with information on what's needed to build/run on Fedora
+* Removed the pageup/pagedown default stick zones (because I haven't figured out how to remove them in my bind files yet)
+* Fixed the crashes I was seeing when running without specifying certain parameters (pipe_in, pipe_out, config)
 
-* Removed all dependencies on boost libraries
-* Fixed a couple of bugs (and probably introduced some others)
-* Merged some work on adding support for additional keys and mouse clicks
-* Added support for USB hotplugging
-* Moved from regular Makefile to CMake
-* Refactored by splitting up huge source files into smaller parts
-* Renamed lots of stuff to start transitioning towards something more like Mozilla coding style
-
-### Changelog
-* v1.0.4
-  * Fixed a major bug in LCD init (thanks to [nihilman](https://github.com/nihilman))
-  * Fixed a small memory leak on hotplug disconnect
-  * More methods renamed for style
+I plan to keep up to date with whomever is maintaining - right now, it's https://github.com/khampf/g13.
 
 ## Installation
 
@@ -61,9 +52,6 @@ If you see output like
              STICK_DOWN   { 0 x 0.7 / 1 x 0.9 }   SEND KEYS: DOWN
              STICK_LEFT   { 0 x 0 / 0.2 x 1 }   SEND KEYS: LEFT
             STICK_RIGHT   { 0.8 x 0 / 1 x 1 }   SEND KEYS: RIGHT
-           STICK_PAGEUP   { 0 x 0 / 1 x 0.1 }   SEND KEYS: PAGEUP
-         STICK_PAGEDOWN   { 0 x 0.9 / 1 x 1 }   SEND KEYS: PAGEDOWN
-
 
 
 that is good. This also shows you which name the keys on the G13 have, and what keys you can bind them to.
