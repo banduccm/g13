@@ -60,35 +60,27 @@ inline string_repr_out repr(const std::string &s) { return string_repr_out(s); }
 
 // *************************************************************************
 
+class NotFoundException : public std::exception {
+public:
+  virtual const char *what() noexcept { return nullptr; }
+};
+
 template <class KEYT, class VALT>
 inline const VALT &find_or_throw(const std::map<KEYT, VALT> &m,
                                  const KEYT &target) {
   auto i = m.find(target);
-  if (i != m.end()) {
-    return i->second; 
-  }
-  else
-  {
-    throw std::exception();
+  if (i == m.end()) {
+    throw NotFoundException();
   }
 }
 
 template <class KEYT, class VALT>
 inline VALT &find_or_throw(std::map<KEYT, VALT> &m, const KEYT &target) {
   auto i = m.find(target);
-  if (i != m.end()) {
-    return i->second;
-  }
-  else
-  {
-    throw std::exception();
+  if (i == m.end()) {
+    throw NotFoundException();
   }
 }
-
-class NotFoundException : public std::exception {
-public:
-  virtual const char *what() noexcept { return nullptr; }
-};
 
 // *************************************************************************
 
